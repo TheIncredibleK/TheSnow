@@ -18,5 +18,6 @@ public class BallBoy : MonoBehaviour
         var emptyFollower = Instantiate(follower);
         emptyFollower.GetComponent<ParentPositionSetter>().follow = player.transform;
         camera.GetComponent<CameraFollower>().target = emptyFollower.transform;
+        player.GetComponent<SnowBall>().normalizedForward = follower.transform;
     }
 }

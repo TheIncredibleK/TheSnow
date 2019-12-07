@@ -9,6 +9,8 @@ public class SnowBall : MonoBehaviour {
     [SerializeField]
     private float acceleration;
     [SerializeField]
+    private float rotSpeed;
+    [SerializeField]
     private float shrinkDuration;
     [SerializeField]
     private ParticleSystem emitterWhenHit;
@@ -26,7 +28,7 @@ public class SnowBall : MonoBehaviour {
     private bool HitByTree;
     private float countdown;
 
-
+    public Transform normalizedForward;
 
 	// Use this for initialization
 	void Start ()
@@ -70,7 +72,9 @@ public class SnowBall : MonoBehaviour {
 
     private void Movement()
     {
-        myRigidBoy.AddForce(Vector3.right * acceleration * Time.deltaTime * horizonal * transform.localScale.x);
+        myRigidBoy.AddForce(transform.right * rotSpeed * Time.deltaTime * transform.localScale.x * horizonal, ForceMode.Impulse);
+        myRigidBoy.AddForce(normalizedForward.forward * acceleration * Time.deltaTime);
+        
     }
 
     private void SetControls()

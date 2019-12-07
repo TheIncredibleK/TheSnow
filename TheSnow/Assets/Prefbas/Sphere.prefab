@@ -110,7 +110,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &583090764497116312
 MonoBehaviour:
@@ -125,11 +125,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkSpeed: 5
-  acceleration: 150
+  acceleration: 350
+  rotSpeed: 2
   shrinkDuration: 0.05
   emitterWhenHit: {fileID: 7208637118862516243, guid: 3b6adbd7c433645aaa48515980d73808,
     type: 3}
   HitByTree: 0
+  normalizedForward: {fileID: 0}
 --- !u!198 &583090764497116314
 ParticleSystem:
   m_ObjectHideFlags: 0
