@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009e87a1700be4ab2b9f45091b32a786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: 0.05
+  growthRate: 0.1
 --- !u!1 &1079812204
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,9 +563,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadd54cd7cbb949129ff1ce57341a682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: 10
-  initalGrowthRate: 0
+  shrinkSpeed: 5
   acceleration: 150
+  shrinkDuration: 0.05
+  hitByTree: 0
 --- !u!1 &2012952210
 GameObject:
   m_ObjectHideFlags: 0
