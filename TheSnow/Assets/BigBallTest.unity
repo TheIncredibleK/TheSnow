@@ -5401,12 +5401,12 @@ PrefabInstance:
     - target: {fileID: 7208637118862516243, guid: 3b6adbd7c433645aaa48515980d73808,
         type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7208637118862516243, guid: 3b6adbd7c433645aaa48515980d73808,
         type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7208637118862516245, guid: 3b6adbd7c433645aaa48515980d73808,
         type: 3}

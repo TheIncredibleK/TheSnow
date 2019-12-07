@@ -31,7 +31,9 @@ public class SnowBall : MonoBehaviour {
     {
         myRigidBoy = gameObject.GetComponent<Rigidbody>();
         snowballConfig = SnowBallConfiguration.Default();
-	}
+        currentEmitter = Instantiate(emitterWhenHit, transform.position, transform.rotation);
+    }
+
 	
 	// Update is called once per frame
 	void Update ()
@@ -46,14 +48,9 @@ public class SnowBall : MonoBehaviour {
     {
         if(HitByTree)
         {
-            if (createdEmitter == false)
-            {
-                currentEmitter = Instantiate(emitterWhenHit, transform.position, transform.rotation);
-
-                var shape = currentEmitter.shape;
-                shape.radius = transform.localScale.x;
-                currentEmitter.Play();
-            }
+            var shape = currentEmitter.shape;
+            shape.radius = transform.localScale.x;
+            currentEmitter.Play();
             
             var currentScale = transform.localScale;
             transform.localScale -= new Vector3(currentScale.x * shrinkSpeed * Time.deltaTime, currentScale.y * shrinkSpeed * Time.deltaTime, currentScale.z * shrinkSpeed * Time.deltaTime);
@@ -65,8 +62,6 @@ public class SnowBall : MonoBehaviour {
             HitByTree = false;
             countdown = 0;
             currentEmitter.Stop();
-            DestroyImmediate(currentEmitter);
-            createdEmitter = false;
         }
     }
 
