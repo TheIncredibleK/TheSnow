@@ -11,7 +11,10 @@ public class SnowBall : MonoBehaviour {
     [SerializeField]
     private float shrinkDuration;
     [SerializeField]
-    private string TREE_TAG;
+    private ParticleSystem emitterWhenHit;
+    private bool createdEmitter;
+    private ParticleSystem currentEmitter;
+
 
     // Non Serializable
     private Rigidbody myRigidBoy;
@@ -28,7 +31,9 @@ public class SnowBall : MonoBehaviour {
     {
         myRigidBoy = gameObject.GetComponent<Rigidbody>();
         snowballConfig = SnowBallConfiguration.Default();
-	}
+        currentEmitter = Instantiate(emitterWhenHit, transform.position, transform.rotation);
+    }
+
 	
 	// Update is called once per frame
 	void Update ()
@@ -43,7 +48,10 @@ public class SnowBall : MonoBehaviour {
     {
         if(HitByTree)
         {
-
+            var shape = currentEmitter.shape;
+            shape.radius = transform.localScale.x;
+            currentEmitter.Play();
+            
             var currentScale = transform.localScale;
             transform.localScale -= new Vector3(currentScale.x * shrinkSpeed * Time.deltaTime, currentScale.y * shrinkSpeed * Time.deltaTime, currentScale.z * shrinkSpeed * Time.deltaTime);
             countdown += Time.deltaTime;
@@ -53,6 +61,7 @@ public class SnowBall : MonoBehaviour {
         {
             HitByTree = false;
             countdown = 0;
+            currentEmitter.Stop();
         }
     }
 
