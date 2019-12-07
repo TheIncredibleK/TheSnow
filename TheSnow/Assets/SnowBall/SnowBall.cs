@@ -34,7 +34,6 @@ public class SnowBall : MonoBehaviour {
         myRigidBoy = gameObject.GetComponent<Rigidbody>();
         snowballConfig = SnowBallConfiguration.Default();
         currentEmitter = Instantiate(emitterWhenHit, transform.position, transform.rotation);
-        currentEmitter.transform.parent = transform;
     }
 
 	
@@ -53,6 +52,7 @@ public class SnowBall : MonoBehaviour {
         {
             var shape = currentEmitter.shape;
             shape.radius = transform.localScale.x;
+            currentEmitter.transform.position = transform.position;
             currentEmitter.Play();
             
             var currentScale = transform.localScale;
