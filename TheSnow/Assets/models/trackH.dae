@@ -5,32 +5,11 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.81.16 commit date:2019-12-04, commit time:11:32, hash:f1aa4d18d49d</authoring_tool>
     </contributor>
-    <created>2019-12-07T15:35:30</created>
-    <modified>2019-12-07T15:35:30</modified>
+    <created>2019-12-07T16:15:29</created>
+    <modified>2019-12-07T16:15:29</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
-  <library_cameras>
-    <camera id="Camera-camera" name="Camera">
-      <optics>
-        <technique_common>
-          <perspective>
-            <xfov sid="xfov">39.59775</xfov>
-            <aspect_ratio>1.777778</aspect_ratio>
-            <znear sid="znear">0.1</znear>
-            <zfar sid="zfar">100</zfar>
-          </perspective>
-        </technique_common>
-      </optics>
-      <extra>
-        <technique profile="blender">
-          <shiftx sid="shiftx" type="float">0</shiftx>
-          <shifty sid="shifty" type="float">0</shifty>
-          <dof_distance sid="dof_distance" type="float">10</dof_distance>
-        </technique>
-      </extra>
-    </camera>
-  </library_cameras>
   <library_effects>
     <effect id="Material-effect">
       <profile_COMMON>
@@ -193,10 +172,6 @@
       <node id="Cube_001" name="Cube.001" type="NODE">
         <matrix sid="transform">1 4.44082e-16 0 1.19209e-7 4.44082e-16 -0.9999655 0.008311025 3.741886 0 -0.008311025 -0.9999655 1.034506 0 0 0 1</matrix>
         <instance_geometry url="#Cube_001-mesh" name="Cube.001"/>
-      </node>
-      <node id="Camera" name="Camera" type="NODE">
-        <matrix sid="transform">0.6859207 -0.3240135 0.6515582 7.358891 0.7276763 0.3054208 -0.6141704 -6.925791 0 0.8953956 0.4452714 4.958309 0 0 0 1</matrix>
-        <instance_camera url="#Camera-camera"/>
       </node>
       <node id="Cube" name="Cube" type="NODE">
         <matrix sid="transform">1 4.44082e-16 0 1.19209e-7 4.44082e-16 -0.9999655 0.008311025 -0.2497889 0 -0.008311025 -0.9999655 -0.7976465 0 0 0 1</matrix>
