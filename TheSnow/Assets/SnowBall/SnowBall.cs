@@ -32,13 +32,6 @@ public class SnowBall : MonoBehaviour {
         transform.localScale = currentScale;
     }
 
-
-    private void SetGrowthRate(float newGrowthRate)
-    {
-        growthRate = newGrowthRate;
-    }
-
-
     private void OnCollisionEnter(Collision collision)
     {
         var newSnowBallConfig = collision.gameObject.GetComponent<AbstractGround>();
