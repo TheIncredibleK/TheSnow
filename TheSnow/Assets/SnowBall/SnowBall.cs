@@ -26,12 +26,15 @@ public class SnowBall : MonoBehaviour {
     private bool HitByTree;
     private float countdown;
 
+
+
 	// Use this for initialization
 	void Start ()
     {
         myRigidBoy = gameObject.GetComponent<Rigidbody>();
         snowballConfig = SnowBallConfiguration.Default();
         currentEmitter = Instantiate(emitterWhenHit, transform.position, transform.rotation);
+        currentEmitter.transform.parent = transform;
     }
 
 	
@@ -90,9 +93,13 @@ public class SnowBall : MonoBehaviour {
             snowballConfig = newSnowBallConfig.GetBallConfiguration();
         }
 
-        if(collision.gameObject.tag == GameConstants.TREE_TAG)
+        if (collision.gameObject.tag == GameConstants.TREE_TAG)
         {
             HitByTree = true;
+            float force = 3;
+            Vector3 dir = collision.contacts[0].point - transform.position;
+            dir = -dir.normalized;
+            GetComponent<Rigidbody>().AddForce(dir * force, ForceMode.Impulse);
         }
     }
 }
