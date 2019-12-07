@@ -5,11 +5,13 @@ using UnityEngine;
 public class SnowBall : MonoBehaviour {
 
     [SerializeField]
-    private float growthRate;
-    [SerializeField]
-    private float initalGrowthRate;
+    private float shrinkSpeed;
     [SerializeField]
     private float acceleration;
+    [SerializeField]
+    private float shrinkDuration;
+    [SerializeField]
+    private string TREE_TAG;
 
     // Non Serializable
     private Rigidbody myRigidBoy;
@@ -17,6 +19,10 @@ public class SnowBall : MonoBehaviour {
 
     // Control Direction
     private float horizonal;
+    [SerializeField]
+    private bool HitByTree;
+    private float countdown;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -30,6 +36,24 @@ public class SnowBall : MonoBehaviour {
         AdjustSizeByGrowthRate();
         SetControls();
         Movement();
+        CheckIfHitByTree();
+    }
+
+    private void CheckIfHitByTree()
+    {
+        if(HitByTree)
+        {
+
+            var currentScale = transform.localScale;
+            transform.localScale -= new Vector3(currentScale.x * shrinkSpeed * Time.deltaTime, currentScale.y * shrinkSpeed * Time.deltaTime, currentScale.z * shrinkSpeed * Time.deltaTime);
+            countdown += Time.deltaTime;
+        }
+
+        if (countdown > shrinkDuration)
+        {
+            HitByTree = false;
+            countdown = 0;
+        }
     }
 
     private void Movement()
@@ -55,6 +79,11 @@ public class SnowBall : MonoBehaviour {
         if (newSnowBallConfig != null)
         {
             snowballConfig = newSnowBallConfig.GetBallConfiguration();
+        }
+
+        if(collision.gameObject.tag == GameConstants.TREE_TAG)
+        {
+            HitByTree = true;
         }
     }
 }
