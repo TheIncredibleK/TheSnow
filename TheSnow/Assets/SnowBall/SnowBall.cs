@@ -100,7 +100,7 @@ public class SnowBall : MonoBehaviour {
         if (collision.gameObject.tag == GameConstants.TREE_TAG)
         {
             HitByTree = true;
-            float force = 3;
+            float force = 15;
             Vector3 dir = collision.contacts[0].point - transform.position;
             dir = -dir.normalized;
             GetComponent<Rigidbody>().AddForce(dir * force, ForceMode.Impulse);
