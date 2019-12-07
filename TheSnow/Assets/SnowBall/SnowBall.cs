@@ -8,9 +8,15 @@ public class SnowBall : MonoBehaviour {
     private float growthRate;
     [SerializeField]
     private float initalGrowthRate;
+    [SerializeField]
+    private float acceleration;
 
+    // Non Serializable
     private Rigidbody myRigidBoy;
     private SnowBallConfiguration snowballConfig;
+
+    // Control Direction
+    private float horizonal;
 	// Use this for initialization
 	void Start ()
     {
@@ -22,8 +28,19 @@ public class SnowBall : MonoBehaviour {
 	void Update ()
     {
         AdjustSizeByGrowthRate();
-	}
+        SetControls();
+        Movement();
+    }
 
+    private void Movement()
+    {
+        myRigidBoy.AddForce(Vector3.right * acceleration * Time.deltaTime * horizonal * transform.localScale.x);
+    }
+
+    private void SetControls()
+    {
+        horizonal = Input.GetAxis("Horizontal");
+    }
 
     private void AdjustSizeByGrowthRate()
     {
